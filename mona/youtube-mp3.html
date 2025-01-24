@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>youtube to mp3</title><link rel="stylesheet" href="/notebook/styles/global.css"></head> <body> <header> <h1>youtube to mp3</h1> </header> <main> <div class="container"> <h1 id="how-to-download-and-convert-youtube-videos-to-mp3-on-macos"><strong>How to Download and Convert YouTube Videos to MP3 on macOS</strong></h1>
+<h3 id="part-1-install-yt-dlp"><strong>Part 1: Install yt-dlp</strong></h3>
+<h4 id="1-download-yt-dlp">1. <strong>Download yt-dlp</strong></h4>
+<ol>
+<li>Open this link:
+<a href="https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos" rel="noopener noreferrer" target="_blank">Download yt-dlp_macos</a></li>
+<li>Save the file in your <strong>Downloads folder</strong>.</li>
+</ol>
+<h4 id="2-move-yt-dlp-to-applications">2. <strong>Move yt-dlp to Applications</strong></h4>
+<ol>
+<li>Open <strong>Finder</strong> and go to your <strong>Downloads folder</strong>.</li>
+<li>Drag the file named <strong>yt-dlp_macos</strong> into your <strong>Applications folder</strong>.</li>
+</ol>
+<h4 id="3-allow-macos-to-open-yt-dlp">3. <strong>Allow macOS to Open yt-dlp</strong></h4>
+<ol>
+<li>Open <strong>Finder</strong> and go to your <strong>Applications folder</strong>.</li>
+<li>Locate <strong>yt-dlp_macos</strong>.</li>
+<li><strong>Right-click</strong> (or Control-click) the file and select <strong>Open</strong>.</li>
+<li>A pop-up will appear saying:
+<em>“yt-dlp_macos can’t be opened because Apple cannot check it for malicious software.”</em>
+Click <strong>Open Anyway</strong>.</li>
+</ol>
+<hr>
+<h3 id="part-2-install-ffmpeg-for-converting-to-mp3"><strong>Part 2: Install FFmpeg for Converting to MP3</strong></h3>
+<h4 id="1-download-ffmpeg">1. <strong>Download FFmpeg</strong></h4>
+<ol>
+<li>Open this link:
+<a href="https://evermeet.cx/ffmpeg/" rel="noopener noreferrer" target="_blank">https://evermeet.cx/ffmpeg/</a></li>
+<li>Look <strong>under the green buttons</strong> and find the text:
+<em>“Download as ZIP”</em>.
+<ul>
+<li><strong>Do not click the big green button</strong>. Instead, click the small <strong>“Download as ZIP”</strong> link below it.</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-extract-ffmpeg">2. <strong>Extract FFmpeg</strong></h4>
+<ol>
+<li>Go to your <strong>Downloads folder</strong>.</li>
+<li><strong>Right-click</strong> the ZIP file and select <strong>Open with Archive Utility</strong>.
+You’ll see a file named <strong>ffmpeg</strong>.</li>
+</ol>
+<h4 id="3-move-ffmpeg-to-applications">3. <strong>Move FFmpeg to Applications</strong></h4>
+<ol>
+<li>Drag the <strong>ffmpeg</strong> file to your <strong>Applications folder</strong>.</li>
+</ol>
+<h4 id="4-allow-macos-to-run-ffmpeg">4. <strong>Allow macOS to Run FFmpeg</strong></h4>
+<ol>
+<li>Open <strong>Terminal</strong> (press <code>Command + Space</code>, type “Terminal,” and press Enter).</li>
+<li>Copy and paste this command to remove any restrictions:
+<pre><code class="language-bash">xattr -dr com.apple.quarantine /Applications/ffmpeg
+</code></pre>
+</li>
+<li>Make FFmpeg executable by running:
+<pre><code class="language-bash">chmod +x /Applications/ffmpeg
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="part-3-download-youtube-videos-as-mp3"><strong>Part 3: Download YouTube Videos as MP3</strong></h3>
+<h4 id="1-move-to-the-downloads-directory-in-terminal">1. <strong>Move to the Downloads Directory in Terminal</strong></h4>
+<p>Before running <code>yt-dlp</code>, move to the <strong>Downloads folder</strong> so your files are saved there:</p>
+<pre><code class="language-bash">cd ~/Downloads
+</code></pre>
+<h4 id="2-run-yt-dlp">2. <strong>Run yt-dlp</strong></h4>
+<p>To download and convert a YouTube video to MP3, use this command:</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+<ul>
+<li>Replace <strong><code>VIDEO_ID</code></strong> with the actual video link (e.g., <code>https://www.youtube.com/watch?v=aNSH8OdHx2A</code>).</li>
+</ul>
+<hr>
+<h3 id="part-4-adjusting-mp3-file-size-and-quality"><strong>Part 4: Adjusting MP3 File Size and Quality</strong></h3>
+<h4 id="-how-to-make-the-mp3-smaller-or-bigger">🎵 <strong>How to Make the MP3 Smaller or Bigger</strong></h4>
+<p>You can adjust the file size by modifying the <strong>bitrate</strong> during conversion:</p>
+<ul>
+<li><strong>Smaller File Size:</strong> Use a lower bitrate (e.g., 64kbps). Ideal for audiobooks or podcasts.</li>
+<li><strong>Higher Quality:</strong> Use a higher bitrate (e.g., 192kbps or 320kbps) for better sound but larger files.</li>
+</ul>
+<h4 id="-command-examples">🛠 <strong>Command Examples:</strong></h4>
+<ul>
+<li><strong>Low Quality (Small File, ~3MB):</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 64 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+<li><strong>Standard Quality (Default, ~6MB):</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 128 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+<li><strong>High Quality (Larger File, ~12MB):</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 320 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="part-5-summary-of-storage-capacities-for-mp3-files"><strong>Part 5: Summary of Storage Capacities for MP3 Files</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Model</strong></th><th><strong>Memory Capacity</strong></th><th><strong>Usable Memory</strong></th><th><strong>~6MB MP3 Files</strong></th></tr></thead><tbody><tr><td>NW-S313</td><td>4GB</td><td>~3.5GB</td><td>~595 songs</td></tr><tr><td>NW-S315</td><td>16GB</td><td>~14.5GB</td><td>~2,465 songs</td></tr><tr><td>NW-S313K</td><td>4GB</td><td>~3.5GB</td><td>~595 songs</td></tr><tr><td>NW-S315K</td><td>16GB</td><td>~14.5GB</td><td>~2,465 songs</td></tr></tbody></table>
+<hr>
+<h3 id="-what-if-the-mp3-files-are-bigger-or-smaller">🎧 <strong>What If the MP3 Files Are Bigger or Smaller?</strong></h3>
+<ul>
+<li><strong>Higher Bitrate (e.g., 320kbps):</strong>
+<ul>
+<li>A 320kbps MP3 file is around <strong>12MB per song</strong>.</li>
+<li>Divide the above song counts by 2.</li>
+</ul>
+</li>
+<li><strong>Lower Bitrate (e.g., 64kbps):</strong>
+<ul>
+<li>A 64kbps MP3 file is around <strong>3MB per song</strong>.</li>
+<li>Double the above song counts.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="part-6-extra-features"><strong>Part 6: Extra Features</strong></h3>
+<h4 id="download-mp4-video-instead-of-mp3"><strong>Download MP4 Video Instead of MP3</strong></h4>
+<p>To save the full video in MP4 format:</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos -f 'best[ext=mp4]' 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+<h4 id="download-entire-playlists"><strong>Download Entire Playlists</strong></h4>
+<p>To download all videos in a playlist:</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos 'https://www.youtube.com/playlist?list=PLAYLIST_ID'
+</code></pre>
+<h4 id="batch-download-using-a-list"><strong>Batch Download Using a List</strong></h4>
+<p>Save URLs in a file (e.g., <code>urls.txt</code>) and use:</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos -a urls.txt
+</code></pre>
+<hr> </div> </main> </body></html>

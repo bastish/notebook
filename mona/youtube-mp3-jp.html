@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>youtube to mp3 日本語</title><link rel="stylesheet" href="/notebook/styles/global.css"></head> <body> <header> <h1>youtube to mp3 日本語</h1> </header> <main> <div class="container"> <h1 id="macosでyoutube動画をmp3にダウンロードして変換する方法"><strong>macOSでYouTube動画をMP3にダウンロードして変換する方法</strong></h1>
+<h3 id="パート1-yt-dlpのインストール"><strong>パート1: yt-dlpのインストール</strong></h3>
+<h4 id="1-yt-dlpをダウンロード">1. <strong>yt-dlpをダウンロード</strong></h4>
+<ol>
+<li>以下のリンクを開きます：<br>
+<a href="https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos" rel="noopener noreferrer" target="_blank">yt-dlp_macosをダウンロード</a></li>
+<li>ファイルを<strong>ダウンロードフォルダ</strong>に保存します。</li>
+</ol>
+<h4 id="2-yt-dlpをapplicationsフォルダに移動">2. <strong>yt-dlpをApplicationsフォルダに移動</strong></h4>
+<ol>
+<li><strong>Finder</strong>で<strong>ダウンロードフォルダ</strong>を開きます。</li>
+<li><strong>yt-dlp_macos</strong>という名前のファイルを<strong>Applicationsフォルダ</strong>にドラッグ＆ドロップします。</li>
+</ol>
+<h4 id="3-macosでyt-dlpを開けるように設定">3. <strong>macOSでyt-dlpを開けるように設定</strong></h4>
+<ol>
+<li><strong>Finder</strong>で<strong>Applicationsフォルダ</strong>を開きます。</li>
+<li><strong>yt-dlp_macos</strong>を探します。</li>
+<li><strong>右クリック（またはControlキー+クリック）<strong>して</strong>開く</strong>を選択します。</li>
+<li>以下のようなポップアップが表示されます：<br>
+<em>「Appleは“yt-dlp_macos”を悪質なソフトウェアかどうかを確認できません。」</em><br>
+**「開く」**をクリックします。</li>
+</ol>
+<hr>
+<h3 id="パート2-mp3変換用のffmpegをインストール"><strong>パート2: MP3変換用のFFmpegをインストール</strong></h3>
+<h4 id="1-ffmpegをダウンロード">1. <strong>FFmpegをダウンロード</strong></h4>
+<ol>
+<li>以下のリンクを開きます：<br>
+<a href="https://evermeet.cx/ffmpeg/" rel="noopener noreferrer" target="_blank">https://evermeet.cx/ffmpeg/</a></li>
+<li><strong>緑のボタンの下</strong>にある次のテキストを探します：<br>
+<em>“Download as ZIP”</em>
+<ul>
+<li><strong>大きな緑のボタンはクリックしないでください</strong>。代わりに**「Download as ZIP」**という小さなリンクをクリックしてください。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-ffmpegを解凍">2. <strong>FFmpegを解凍</strong></h4>
+<ol>
+<li><strong>ダウンロードフォルダ</strong>に移動します。</li>
+<li>ZIPファイルを<strong>右クリック</strong>して**「アーカイブユーティリティで開く」**を選択します。<br>
+<strong>ffmpeg</strong>という名前のファイルが表示されます。</li>
+</ol>
+<h4 id="3-ffmpegをapplicationsフォルダに移動">3. <strong>FFmpegをApplicationsフォルダに移動</strong></h4>
+<ol>
+<li><strong>ffmpeg</strong>ファイルを<strong>Applicationsフォルダ</strong>にドラッグ＆ドロップします。</li>
+</ol>
+<h4 id="4-macosでffmpegを実行可能にする">4. <strong>macOSでFFmpegを実行可能にする</strong></h4>
+<ol>
+<li><strong>ターミナル</strong>を開きます（<code>Command + Space</code>を押して「Terminal」と入力してEnter）。</li>
+<li>以下のコマンドをコピーして貼り付け、制限を解除します：
+<pre><code class="language-bash">xattr -dr com.apple.quarantine /Applications/ffmpeg
+</code></pre>
+</li>
+<li>FFmpegを実行可能にするために以下を実行します：
+<pre><code class="language-bash">chmod +x /Applications/ffmpeg
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="パート3-youtube動画をmp3にダウンロード"><strong>パート3: YouTube動画をMP3にダウンロード</strong></h3>
+<h4 id="1-ターミナルでダウンロードフォルダに移動">1. <strong>ターミナルでダウンロードフォルダに移動</strong></h4>
+<p>コマンドを実行する前に、<strong>ダウンロードフォルダ</strong>に移動してファイルを保存します：</p>
+<pre><code class="language-bash">cd ~/Downloads
+</code></pre>
+<h4 id="2-yt-dlpを実行">2. <strong>yt-dlpを実行</strong></h4>
+<p>YouTube動画をMP3にダウンロードして変換するには、以下のコマンドを使用します：</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+<ul>
+<li>**<code>VIDEO_ID</code>**を実際の動画リンクに置き換えます（例：<code>https://www.youtube.com/watch?v=aNSH8OdHx2A</code>）。</li>
+</ul>
+<hr>
+<h3 id="パート4-mp3ファイルのサイズと品質を調整"><strong>パート4: MP3ファイルのサイズと品質を調整</strong></h3>
+<h4 id="-mp3を小さくしたり大きくしたりする方法">🎵 <strong>MP3を小さくしたり大きくしたりする方法</strong></h4>
+<p><strong>ビットレート</strong>を変更することでファイルサイズを調整できます：</p>
+<ul>
+<li><strong>小さいファイルサイズ:</strong> 低ビットレート（例：64kbps）を使用。オーディオブックやポッドキャストに最適。</li>
+<li><strong>高品質:</strong> 高ビットレート（例：192kbpsや320kbps）を使用。音質が向上しますが、ファイルが大きくなります。</li>
+</ul>
+<h4 id="-コマンド例">🛠 <strong>コマンド例</strong></h4>
+<ul>
+<li><strong>低品質（小さいファイル、約3MB）：</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 64 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+<li><strong>標準品質（デフォルト、約6MB）：</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 128 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+<li><strong>高品質（大きなファイル、約12MB）：</strong>
+<pre><code class="language-bash">/Applications/yt-dlp_macos --extract-audio --audio-format mp3 --audio-quality 320 --ffmpeg-location /Applications/ffmpeg 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="パート5-mp3ファイルの容量サマリー"><strong>パート5: MP3ファイルの容量サマリー</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>モデル</strong></th><th><strong>容量</strong></th><th><strong>使用可能容量</strong></th><th><strong>~6MBのMP3ファイル数</strong></th></tr></thead><tbody><tr><td>NW-S313</td><td>4GB</td><td>~3.5GB</td><td>~595曲</td></tr><tr><td>NW-S315</td><td>16GB</td><td>~14.5GB</td><td>~2,465曲</td></tr><tr><td>NW-S313K</td><td>4GB</td><td>~3.5GB</td><td>~595曲</td></tr><tr><td>NW-S315K</td><td>16GB</td><td>~14.5GB</td><td>~2,465曲</td></tr></tbody></table>
+<hr>
+<h3 id="-mp3ファイルが大きい場合や小さい場合">🎧 <strong>MP3ファイルが大きい場合や小さい場合</strong></h3>
+<ul>
+<li><strong>高ビットレート（例：320kbps）：</strong>
+<ul>
+<li>1曲あたりのサイズは約<strong>12MB</strong>になります。</li>
+<li>上記の曲数を<strong>半分</strong>にしてください。</li>
+</ul>
+</li>
+<li><strong>低ビットレート（例：64kbps）：</strong>
+<ul>
+<li>1曲あたりのサイズは約<strong>3MB</strong>になります。</li>
+<li>上記の曲数を<strong>2倍</strong>にしてください。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="パート6-その他の機能"><strong>パート6: その他の機能</strong></h3>
+<h4 id="mp3ではなくmp4をダウンロード"><strong>MP3ではなくMP4をダウンロード</strong></h4>
+<p>動画全体をMP4形式で保存するには以下を使用します：</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos -f 'best[ext=mp4]' 'https://www.youtube.com/watch?v=VIDEO_ID'
+</code></pre>
+<h4 id="プレイリスト全体をダウンロード"><strong>プレイリスト全体をダウンロード</strong></h4>
+<p>プレイリスト内のすべての動画をダウンロード：</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos 'https://www.youtube.com/playlist?list=PLAYLIST_ID'
+</code></pre>
+<h4 id="リストを使った一括ダウンロード"><strong>リストを使った一括ダウンロード</strong></h4>
+<p>複数のURLをリストファイル（例：<code>urls.txt</code>）に保存し、以下を実行：</p>
+<pre><code class="language-bash">/Applications/yt-dlp_macos -a urls.txt
+</code></pre>
+<hr>
+<p>これで完了です！使い方について質問があれば教えてください 😊</p>
+<pre><code></code></pre> </div> </main> </body></html>

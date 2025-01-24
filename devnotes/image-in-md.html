@@ -1,0 +1,82 @@
+<!DOCTYPE html><meta charset="utf-8"><p>In Astro, you can add images to your Markdown files by placing the images in either the <code>public/</code> directory or the <code>src/assets/</code> directory, depending on your preference and needs. Here’s how:</p>
+<hr>
+<h3 id="option-1-place-images-in-the-public-directory"><strong>Option 1: Place Images in the <code>public/</code> Directory</strong></h3>
+<p>The <code>public/</code> directory is for static files that are served as-is. When you put images here, you can reference them directly by their URL.</p>
+<ol>
+<li>
+<p><strong>Place your image in the <code>public/</code> directory</strong>:
+For example: <code>public/images/campground.jpg</code></p>
+</li>
+<li>
+<p><strong>Link to the image in your Markdown</strong>:</p>
+<pre><code class="language-markdown"># My Trip
+
+Here's the campground:
+
+![Campground](images/campground.jpg)
+</code></pre>
+</li>
+<li>
+<p><strong>Output</strong>:
+Astro will render this as:</p>
+<pre><code class="language-html">&#x3C;img src="/images/campground.jpg" alt="Campground">
+</code></pre>
+</li>
+</ol>
+<hr>
+<h3 id="option-2-place-images-in-the-srcassets-directory"><strong>Option 2: Place Images in the <code>src/assets/</code> Directory</strong></h3>
+<p>If you use the <code>src/assets/</code> directory, Astro will process and optimize these images during build time, allowing you to use image transformations (e.g., resizing).</p>
+<ol>
+<li>
+<p><strong>Place your image in the <code>src/assets/</code> directory</strong>:
+For example: <code>src/assets/images/campground.jpg</code></p>
+</li>
+<li>
+<p><strong>Update the Markdown to include the image</strong>:
+Use Astro’s <code>Image</code> component if you want optimized images:</p>
+<pre><code class="language-markdown"># My Trip
+
+Here's the campground:
+
+![Campground](images/campground.jpg)
+</code></pre>
+</li>
+<li>
+<p><strong>Output</strong>:
+You may need to adjust the frontmatter or use custom logic to handle the image. For most use cases, Astro’s build process will manage it effectively.</p>
+</li>
+</ol>
+<hr>
+<h3 id="key-differences"><strong>Key Differences</strong></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th><code>public/</code> Directory</th><th><code>src/assets/</code> Directory</th></tr></thead><tbody><tr><td><strong>Image URL</strong></td><td>Static and directly usable</td><td>Needs to be processed or referenced via Astro</td></tr><tr><td><strong>Build Optimization</strong></td><td>No optimization</td><td>Optimized during build time</td></tr><tr><td><strong>Use Cases</strong></td><td>External/static resources</td><td>Images requiring transformations</td></tr></tbody></table>
+<hr>
+<h3 id="recommendation">Recommendation</h3>
+<ul>
+<li>Use the <strong><code>public/</code> directory</strong> for simple, static image hosting.</li>
+<li>Use <strong><code>src/assets/</code></strong> for optimized or dynamically processed images.</li>
+</ul>
